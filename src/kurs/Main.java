@@ -21,13 +21,12 @@ public class Main {
     }
 
     private static void doSomeRandom(Animal[] animals) {
-        Random randomWhat = new Random();
-        Random randomDistance = new Random();
+        Random random = new Random();
         int attempts = 10;
         while (attempts > 0) {
             int who = (attempts - 1) % 5;
-            int what = randomWhat.nextInt(10) % 2;
-            int distance = (randomDistance.nextInt(600)) / 10 * 10 + 10;
+            int what = random.nextInt(10) % 2;
+            int distance = (random.nextInt(600)) / 10 * 10 + 10;
             if (what == 0)
                 animals[who].run(distance);
             else
@@ -46,12 +45,11 @@ public class Main {
     private static void outInArray(Animal[] animals) {
         int countCat = 0;
         int countDog = 0;
-        for (int i = 0; i < animals.length; i++) {
-            if (animals[i] instanceof Cat)
+        for (Animal animal : animals) {
+            if (animal instanceof Cat)
                 countCat++;
-            else
-                if (animals[i] instanceof Dog)
-                    countDog++;
+            else if (animal instanceof Dog)
+                countDog++;
         }
         String created = "В массиве объектов %s: %d\n";
         System.out.printf(created, "Animal", animals.length);

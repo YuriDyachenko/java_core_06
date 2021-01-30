@@ -1,11 +1,11 @@
 package kurs;
 
 public abstract class Animal {
-    private String name;
-    private String maleName;
-    private String femaleName;
-    private int maxDistanceForRun;
-    private int maxDistanceForSwim;
+    private final String name;
+    private final String maleName;
+    private final String femaleName;
+    private final int maxDistanceForRun;
+    private final int maxDistanceForSwim;
     private boolean male;
     private static int count;
 
@@ -25,16 +25,16 @@ public abstract class Animal {
     }
 
     public void talk(String what) {
-        System.out.printf("%s говорит: %s", String.format("%s %s", male ? maleName : femaleName, name), what);
+        System.out.printf("%s %s говорит: %s", male ? maleName : femaleName, name, what);
     }
 
     public void run(int distance) {
         doSome(maxDistanceForRun, distance, "бегать", "беги", "пробежал");
-    };
+    }
 
     public void swim(int distance) {
         doSome(maxDistanceForSwim, distance, "плавать", "плыви", "проплыл");
-    };
+    }
 
     private void doSome(int maxDistance, int distance, String undefined, String imperative, String accomplished) {
         if (maxDistance == 0) {
